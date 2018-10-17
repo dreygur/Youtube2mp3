@@ -1,6 +1,6 @@
 theme: jekyll-theme-cayman
-title: Projects & Contributions
-description: Rakibul Yeasin Totul
+title: Youtube to MP3
+description: Youtube to MP3 downloader with QR Code
 avatar: https://raw.githubusercontent.com/jekyll/jekyll/master/docs/favicon.ico
 show_downloads: true
 google_analytics: UA-114697093-1

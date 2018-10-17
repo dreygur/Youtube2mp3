@@ -8,4 +8,4 @@ __*Cameron Dallas*__
 - Click __[here](https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js)__ to download and install the script.
 - **_Enjoy_**
 
-Created with :heart: by [Totul](https://github.com/rytotul/)
+Created with 🎔 by [Totul](https://github.com/rytotul/)

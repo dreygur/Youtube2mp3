@@ -5,7 +5,7 @@
 //
 // @author          Totul
 // @namespace       https://rytotul.github.io
-// @downloadURL     https://rytotul.github.io/iamlazy/
+// @downloadURL     https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @license         GPLv3 - http://www.gnu.org/licenses/gpl-3.0.txt
 // @copyright       Copyright (C) 2018, by Totul
@@ -16,7 +16,7 @@
 // @include         https://www.easy-youtube-mp3.com/*
 //
 // @version         0.1
-// @updateURL       https://rytotul.github.io/iamlazy/
+// @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-end
 // @unwrap

@@ -71,10 +71,10 @@ var myAppInterface = {
   insertGlobalCSS: function(){
     var css = function (){
       /*start
-      #y3mp3.ytd-watch{padding-top:10px;overflow: auto;border-bottom: 1px solid #eee;padding-bottom: 10px;}
-      #y3mp3 .easy_btn{background-color: #FF0000;border: #FF0000;border-radius: 2px;color: #FFF;padding: 10px 16px; font-size: 1.4em;cursor:pointer;display:inline-block}
-      #y3mp3 .easy_btn:hover{background-color: #a22a2a}
-      @media (min-width: 657px){ytd-watch[theater] #y3mp3.ytd-watch{margin-right:24px}}
+      #y2mp3.ytd-watch{padding-top:10px;overflow: auto;border-bottom: 1px solid #eee;padding-bottom: 10px;}
+      #y2mp3 .easy_btn{background-color: #FF0000;border: #FF0000;border-radius: 2px;color: #FFF;padding: 10px 16px; font-size: 1.4em;cursor:pointer;display:inline-block}
+      #y2mp3 .easy_btn:hover{background-color: #a22a2a}
+      @media (min-width: 657px){ytd-watch[theater] #y2mp3.ytd-watch{margin-right:24px}}
       end*/
     }.toString().replace("/*start",'').replace("end*/",'').slice(14,-1);
     this.addGlobalStyle(document, css);
@@ -85,18 +85,18 @@ var createButton = function() {
     var obj = document.querySelector('#primary-inner>#info');
     if(obj != null){
         // check if the button has already been created
-        var btnRow = document.getElementById('y3mp3');
+        var btnRow = document.getElementById('y2mp3');
         if(btnRow == null){
             myAppInterface.init()
-            var y3mp3 = document.createElement("div");
-            y3mp3.id = "y3mp3";
-            y3mp3.className = "style-scope ytd-watch";
+            var y2mp3 = document.createElement("div");
+            y2mp3.id = "y2mp3";
+            y2mp3.className = "style-scope ytd-watch";
             var easy_btn = document.createElement("div");
             easy_btn.className = "style-scope easy_btn";
             easy_btn.appendChild(getSpan("Download MP3"))
             easy_btn.onclick = easy_btn_onclick;
-            obj.parentNode.insertBefore(y3mp3, obj);
-            y3mp3.appendChild(easy_btn);
+            obj.parentNode.insertBefore(y2mp3, obj);
+            y2mp3.appendChild(easy_btn);
         }
     }
 };

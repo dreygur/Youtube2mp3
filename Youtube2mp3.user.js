@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            YouTube 2 mp3
-// @description     The Easy YouTube mp3 Add-on includes a Button on any YouTube Page and allows you to convert the YouTube Video to a mp3 with just one click.
+// @description     The YouTube 2 mp3 Add-on includes a Button on any YouTube Page and allows you to convert the YouTube Video to a mp3 with just one click.
 // @icon            https://www.easy-youtube-mp3.com/addon/icon.png
 //
 // @author          Totul

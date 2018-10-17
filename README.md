@@ -1,5 +1,6 @@
 # Youtube to MP3
-> Nowadays, you can be a fan of someone that's not an actor or artist. You can be a fan of someone that makes YouTube videos.  
+> Nowadays, you can be a fan of someone that's not an actor or artist.  
+You can be a fan of someone that makes YouTube videos.  
 __*Cameron Dallas*__
 
 ### Installtion Instructions:

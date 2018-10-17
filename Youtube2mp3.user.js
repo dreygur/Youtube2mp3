@@ -15,7 +15,7 @@
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //
-// @version         0.2
+// @version         0.3
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-end
@@ -26,7 +26,13 @@ var easy_btn_onclick = function (){
   var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search;
   //window.open(path,'_blank');
 
-  newwindow=window.open(path,"Qr Code",'height=400,width=400');
+  var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+  var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+  var left = ((width / 2) - (w / 2)) + dualScreenLeft;
+  var top = ((height / 2) - (h / 2)) + dualScreenTop;
+
+  newwindow=window.open(path,"Qr Code",'height=400,width=400,top='+top+',left='+left);
   if (window.focus) {newwindow.focus()}
   return false;
 };

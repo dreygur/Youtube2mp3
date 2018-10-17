@@ -24,8 +24,15 @@
 
 var easy_btn_onclick = function (){
   var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search;
-  window.open(path,'_blank');
+  //window.open(path,'_blank');
+
+  newwindow=window.open(path,"Qr Code",'height=400,width=400');
+  if (window.focus) {newwindow.focus()}
+  return false;
 };
+
+
+
 
 var getSpan = function(text, className) {
     var _tn = document.createTextNode(text);

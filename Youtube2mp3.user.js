@@ -112,7 +112,7 @@ function genQR(data) {
     var __awesome_qr_base_path = "https://github.com/SumiMakito/Awesome-qr.js/tree/master/dist";
 
     // require awesome-qr.js
-    require([__awesome_qr_base_path + '/awesome-qr'], function (AwesomeQR) {
+    require([__awesome_qr_base_path + '/awesome-qr.js'], function (AwesomeQR) {
         // ... and make use of it
         AwesomeQR.create({
             text: data,

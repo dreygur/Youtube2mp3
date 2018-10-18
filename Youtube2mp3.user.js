@@ -27,9 +27,8 @@
 
 
 // Button That Captures the click and do the work
-var easy_btn_onclick = function (){
-  var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search; // path to download link
 
+var easy_btn_onclick = function (){
   // Some window measurement capturing
   var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
   var dualScreenTop = window.screenTop != undefined ? window.screenTop : window.screenY;
@@ -38,8 +37,11 @@ var easy_btn_onclick = function (){
   var left = ((width / 2) - (700 / 2)) + dualScreenLeft;
   var top = ((height / 2) - (700 / 2)) + dualScreenTop;
 
+  var url = "www.convertmp3.io/fetch/?video="+window.location.href;
   // Property for new po-up window
-  var newwindow = window.open(path,"Qr Code",'height=400,width=400,top='+top+',left='+left);
+  var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+url+"&chs=300x300&chld=L|0";
+  var newwindow = window.open(qr_code,"Qr Code",'height=400,width=400,top='+top+',left='+left);
+  //window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');
   if (window.focus) {newwindow.focus()}
   return false;
 };
@@ -104,39 +106,9 @@ var createButton = function() {
     }
 };
 
-
-function genQR(data) {
-    // This will specify the base path for awesome-qr.js, gif.js, and gif.worker.js.
-    // In the case showed above, the base path should be "js".
-    // The variable's name should NOT be changed.
-    var __awesome_qr_base_path = "https://github.com/SumiMakito/Awesome-qr.js/tree/master/dist";
-
-    // require awesome-qr.js
-    require([__awesome_qr_base_path + '/awesome-qr.js'], function (AwesomeQR) {
-        // ... and make use of it
-        AwesomeQR.create({
-            text: data,
-            size: 800,
-            margin: 20,
-            bindElement: 'qrcode'
-        });
-    });
-};
-
-
 // yt does make use of some bogus AJAX functionality which breaks pagemod
 // we have to check in intervals if the document has been replaced by yt to
 // recreate the button if needed.
 var intervalCheck = setInterval(function(){
-    if (window.location.origin === "https://www.youtube.com") {
-        createButton();
-    } else {
-        var button = document.getElementsByClassName('btn-success');
-        button.toString;
-        var link = button[0].href;
-        //var qr_code = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+link;
-        //var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
-        var qr_code = genQR(link);
-        window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');
-    }
+    createButton();
 }, 250);

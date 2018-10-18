@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            YouTube 2 mp3(Dev)
-// @description     The YouTube 2 mp3 Add-on includes a Button on any YouTube Page and allows you to convert the YouTube Video to a mp3 with just one click.
+// @description     (Dev Version) VThe YouTube 2 mp3 Add-on includes a Button on any YouTube Page and allows you to convert the YouTube Video to a mp3 with just one click.
 // @icon            https://raw.githubusercontent.com/rytotul/Youtube2mp3/master/icon.png
 //
 // @author          Totul
@@ -18,7 +18,7 @@
 //
 // @require         https://raw.githubusercontent.com/SumiMakito/Awesome-qr.js/master/dist/require.js
 //
-// @version         0.5 (Beta)
+// @version         0.5 (Dev)
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/dev/Youtube2mp3.user.js
 //
 // @run-at          document-end

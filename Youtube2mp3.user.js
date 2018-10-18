@@ -15,7 +15,7 @@
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //
-// @version         0.4 (Beta)
+// @version         0.5 (Beta)
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-end

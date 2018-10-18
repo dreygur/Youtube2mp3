@@ -111,7 +111,8 @@ var intervalCheck = setInterval(function(){
         var button = document.getElementsByClassName('btn-success');
         button.toString;
         var link = button[0].href;
-        var qr_code = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+link;
+        //var qr_code = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+link;
+        var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
         window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');
     }
 }, 250);

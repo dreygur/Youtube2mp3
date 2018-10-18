@@ -38,7 +38,7 @@ var easy_btn_onclick = function (){
   var url = "www.convertmp3.io/fetch/?video="+window.location.href;
   var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+url+"&chs=350x350&chld=L|0";
   var newwindow = window.open("","Qr Code",'height=400,width=400,top='+top+',left='+left);
-  newwindow.document.write('<title>Qr Code</title><iframe style="margin-top:12.5px; margin-left:12.5px; width:350px; height:350px; align:center; border:none;" src="'+qr_code+'"></iframe>');
+  newwindow.document.write('<title>YouTube 2 mp3</title><iframe style="margin-top:12.5px; margin-left:12.5px; width:350px; height:350px; align:center; border:none;" src="'+qr_code+'"></iframe>');
   if (window.focus) {newwindow.focus()}
   return false;
 };

@@ -15,10 +15,7 @@
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //
-//
-// @require         https://raw.githubusercontent.com/SumiMakito/Awesome-qr.js/master/dist/require.js
-//
-// @version         0.5 (Beta)
+// @version         1.0.0
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-end

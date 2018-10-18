@@ -15,6 +15,9 @@
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //
+//
+// @require         https://raw.githubusercontent.com/SumiMakito/Awesome-qr.js/master/dist/require.js
+//
 // @version         0.5 (Beta)
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
@@ -101,6 +104,26 @@ var createButton = function() {
     }
 };
 
+
+function genQR(data) {
+    // This will specify the base path for awesome-qr.js, gif.js, and gif.worker.js.
+    // In the case showed above, the base path should be "js".
+    // The variable's name should NOT be changed.
+    var __awesome_qr_base_path = "https://github.com/SumiMakito/Awesome-qr.js/tree/master/dist";
+
+    // require awesome-qr.js
+    require([__awesome_qr_base_path + '/awesome-qr'], function (AwesomeQR) {
+        // ... and make use of it
+        AwesomeQR.create({
+            text: data,
+            size: 800,
+            margin: 20,
+            bindElement: 'qrcode'
+        });
+    });
+};
+
+
 // yt does make use of some bogus AJAX functionality which breaks pagemod
 // we have to check in intervals if the document has been replaced by yt to
 // recreate the button if needed.
@@ -112,7 +135,8 @@ var intervalCheck = setInterval(function(){
         button.toString;
         var link = button[0].href;
         //var qr_code = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+link;
-        var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
+        //var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
+        var qr_code = genQR(link);
         window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');
     }
 }, 250);

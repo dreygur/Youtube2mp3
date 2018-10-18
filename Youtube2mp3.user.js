@@ -15,19 +15,16 @@
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //
-//
 // @require         https://raw.githubusercontent.com/SumiMakito/Awesome-qr.js/master/dist/require.js
 //
-// @version         0.5 (Dev)
+// @version         0.6 (Dev)
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/dev/Youtube2mp3.user.js
 //
 // @run-at          document-end
 // @unwrap
 // ==/UserScript==
 
-
 // Button That Captures the click and do the work
-
 var easy_btn_onclick = function (){
   // Some window measurement capturing
   var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
@@ -37,11 +34,10 @@ var easy_btn_onclick = function (){
   var left = ((width / 2) - (700 / 2)) + dualScreenLeft;
   var top = ((height / 2) - (700 / 2)) + dualScreenTop;
 
-  var url = "www.convertmp3.io/fetch/?video="+window.location.href;
   // Property for new po-up window
-  var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+url+"&chs=300x300&chld=L|0";
-  var newwindow = window.open(qr_code,"Qr Code",'height=400,width=400,top='+top+',left='+left);
-  //window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');
+  var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+url+"&chs=350x350&chld=L|0";
+  var newwindow = window.open("","Qr Code",'height=400,width=400,top='+top+',left='+left);
+  newwindow.document.write('<title>Qr Code</title><iframe style="margin-top:12.5px; margin-left:12.5px; width:350px; height:350px; align:center; border:none;" src="'+qr_code+'"></iframe>');
   if (window.focus) {newwindow.focus()}
   return false;
 };

@@ -22,22 +22,25 @@
 // @unwrap
 // ==/UserScript==
 
+
 // Button That Captures the click and do the work
-function ytBtnOnclick(){
-  // Some window measurement capturing
-  var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
-  var dualScreenTop = window.screenTop != undefined ? window.screenTop : window.screenY;
-  var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
-  var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
-  var left = ((width / 2) - (700 / 2)) + dualScreenLeft;
-  var top = ((height / 2) - (700 / 2)) + dualScreenTop;
-
-  // Property for new po-up window
-  var newwindow = window.open(path,"Qr Code",'height=400,width=400,top='+top+',left='+left);
-  if (window.focus) {newwindow.focus()}
-  return false;
-};
-
+var easy_btn_onclick = function (){
+    var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search; // path to download link
+  
+    // Some window measurement capturing
+    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
+    var dualScreenTop = window.screenTop != undefined ? window.screenTop : window.screenY;
+    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+    var left = ((width / 2) - (700 / 2)) + dualScreenLeft;
+    var top = ((height / 2) - (700 / 2)) + dualScreenTop;
+  
+    // Property for new po-up window
+    var newwindow = window.open(path,"Qr Code",'height=400,width=400,top='+top+',left='+left);
+    if (window.focus) {newwindow.focus()}
+    return false;
+  };
+  
 // injecting interface to youtube
 function getSpan(text, className) {
     var _tn = document.createTextNode(text);
@@ -101,9 +104,8 @@ function createButton() {
 // yt does make use of some bogus AJAX functionality which breaks pagemod
 // we have to check in intervals if the document has been replaced by yt to
 // recreate the button if needed.
-
-var intervalCheck = setInterval(function(){
-    if (window.location.origin === "https://www.youtube.com") {
+  var intervalCheck = setInterval(function(){
+      if (window.location.origin === "https://www.youtube.com") {
           createButton();
       } else {
           var button = document.getElementsByClassName('btn-success');
@@ -113,4 +115,5 @@ var intervalCheck = setInterval(function(){
           var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
           window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');
       }
-}, 900);
+  }, 250);
+  

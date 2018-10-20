@@ -33,10 +33,11 @@ function ytBtnOnclick(){
   var top = ((height / 2) - (700 / 2)) + dualScreenTop;
 
   // Property for new po-up window
+  var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search; // path to download link
   var url = "www.convertmp3.io/fetch/?video="+window.location.href;
   var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+url+"&chs=350x350&chld=L|0";
   var newwindow = window.open("","Qr Code",'height=400,width=400,top='+top+',left='+left);
-  newwindow.document.write('<title>YouTube 2 mp3</title><iframe style="margin-top:12.5px; margin-left:12.5px; width:350px; height:350px; align:center; border:none;" src="'+qr_code+'"></iframe>');
+  newwindow.document.write('<title>YouTube 2 mp3</title><iframe style="margin-top:12.5px; margin-left:12.5px; width:350px; height:350px; align:center; border:none;" src="'+path+'"></iframe>');
   if (window.focus) {newwindow.focus()}
   return false;
 };
@@ -106,5 +107,14 @@ function createButton() {
 // recreate the button if needed.
 
 var intervalCheck = setInterval(function(){
-    createButton();
+    if (window.location.origin === "https://www.youtube.com") {
+          createButton();
+      } else {
+          var button = document.getElementsByClassName('btn-success');
+          button.toString;
+          var link = button[0].href;
+          //var qr_code = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+link;
+          var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
+          window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');
+      }
 }, 900);

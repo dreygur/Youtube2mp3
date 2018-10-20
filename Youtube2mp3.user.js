@@ -24,7 +24,7 @@
 
 
 // Button That Captures the click and do the work
-var easy_btn_onclick = function (){
+function ytBtnOnclick() {
     var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search; // path to download link
   
     // Some window measurement capturing

@@ -33,11 +33,7 @@ function ytBtnOnclick(){
   var top = ((height / 2) - (700 / 2)) + dualScreenTop;
 
   // Property for new po-up window
-  var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search; // path to download link
-  var url = "www.convertmp3.io/fetch/?video="+window.location.href;
-  var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+url+"&chs=350x350&chld=L|0";
-  var newwindow = window.open("","Qr Code",'height=400,width=400,top='+top+',left='+left);
-  newwindow.document.write('<title>YouTube 2 mp3</title><iframe style="margin-top:12.5px; margin-left:12.5px; width:350px; height:350px; align:center; border:none;" src="'+path+'"></iframe>');
+  var newwindow = window.open(path,"Qr Code",'height=400,width=400,top='+top+',left='+left);
   if (window.focus) {newwindow.focus()}
   return false;
 };

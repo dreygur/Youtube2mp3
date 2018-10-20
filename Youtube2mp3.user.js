@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name            YouTube 2 mp3(Dev)
-// @description     (Dev Version) VThe YouTube 2 mp3 Add-on includes a Button on any YouTube Page and allows you to convert the YouTube Video to a mp3 with just one click.
+// @name            YouTube 2 mp3
+// @description     The YouTube 2 mp3 Add-on includes a Button on any YouTube Page and allows you to convert the YouTube Video to a mp3 with just one click.
 // @icon            https://raw.githubusercontent.com/rytotul/Youtube2mp3/master/icon.png
 //
 // @author          Totul
 // @namespace       https://rytotul.github.io
-// @downloadURL     https://github.com/rytotul/Youtube2mp3/raw/dev/Youtube2mp3.user.js
+// @downloadURL     https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @license         GPLv3 - http://www.gnu.org/licenses/gpl-3.0.txt
 // @copyright       Copyright (C) 2018, by Totul
@@ -15,17 +15,16 @@
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //
-// @require         https://raw.githubusercontent.com/SumiMakito/Awesome-qr.js/master/dist/require.js
-//
-// @version         0.6 (Dev)
-// @updateURL       https://github.com/rytotul/Youtube2mp3/raw/dev/Youtube2mp3.user.js
+// @version         1.0.2
+// @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-end
 // @unwrap
 // ==/UserScript==
 
+
 // Button That Captures the click and do the work
-var easy_btn_onclick = function (){
+function ytBtnOnclick() {
   // Some window measurement capturing
   var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
   var dualScreenTop = window.screenTop != undefined ? window.screenTop : window.screenY;
@@ -41,9 +40,10 @@ var easy_btn_onclick = function (){
   newwindow.document.write('<title>YouTube 2 mp3</title><iframe style="margin-top:12.5px; margin-left:12.5px; width:350px; height:350px; align:center; border:none;" src="'+qr_code+'"></iframe>');
   if (window.focus) {newwindow.focus()}
   return false;
-};
+  };
 
-var getSpan = function(text, className) {
+// injecting interface to youtube
+function getSpan(text, className) {
     var _tn = document.createTextNode(text);
     var span = document.createElement("span");
     span.className = className;
@@ -51,7 +51,6 @@ var getSpan = function(text, className) {
     return span;
 };
 
-// injecting interface to youtube
 var myAppInterface = {
   init:function(){
     this.insertGlobalCSS()
@@ -73,7 +72,7 @@ var myAppInterface = {
   insertGlobalCSS: function(){
     var css = function (){
       /*start
-      #y2mp3.ytd-watch{padding-top:10px;overflow: auto;border-bottom: 1px solid #eee;padding-bottom: 10px;}
+      #y2mp3.ytd-watch{padding-top:10px;overflow: auto;padding-bottom: 10px;}
       #y2mp3 .easy_btn{background-color: #FF0000;border: #FF0000;border-radius: 2px;color: #FFF;padding: 10px 16px; font-size: 1.4em;cursor:pointer;display:inline-block}
       #y2mp3 .easy_btn:hover{background-color: #a22a2a}
       @media (min-width: 657px){ytd-watch[theater] #y2mp3.ytd-watch{margin-right:24px}}
@@ -83,8 +82,8 @@ var myAppInterface = {
   },
 }
 
-var createButton = function() {
-    var obj = document.querySelector('#primary-inner>#info');
+function createButton() {
+    var obj = document.getElementById("sponsor-button");
     if(obj != null){
         // check if the button has already been created
         var btnRow = document.getElementById('y2mp3');
@@ -96,7 +95,7 @@ var createButton = function() {
             var easy_btn = document.createElement("div");
             easy_btn.className = "style-scope easy_btn";
             easy_btn.appendChild(getSpan("Download MP3"))
-            easy_btn.onclick = easy_btn_onclick;
+            easy_btn.onclick = ytBtnOnclick;
             obj.parentNode.insertBefore(y2mp3, obj);
             y2mp3.appendChild(easy_btn);
         }
@@ -107,5 +106,6 @@ var createButton = function() {
 // we have to check in intervals if the document has been replaced by yt to
 // recreate the button if needed.
 var intervalCheck = setInterval(function(){
-    createButton();
+   createButton();
 }, 250);
+

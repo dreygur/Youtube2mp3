@@ -15,7 +15,7 @@
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //
-// @version         1.0.2
+// @version         1.0.1
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-end
@@ -72,6 +72,7 @@ var myAppInterface = {
   insertGlobalCSS: function(){
     var css = function (){
       /*start
+      #btn-padding{padding-top:10px;}
       #y2mp3.ytd-watch{padding-top:10px;overflow: auto;padding-bottom: 10px;}
       #y2mp3 .easy_btn{background-color: #FF0000;border: #FF0000;border-radius: 2px;color: #FFF;padding: 10px 16px; font-size: 1.4em;cursor:pointer;display:inline-block}
       #y2mp3 .easy_btn:hover{background-color: #a22a2a}
@@ -83,21 +84,39 @@ var myAppInterface = {
 }
 
 function createButton() {
+    var btnRow, y2mp3, yBtn;
     var obj = document.getElementById("sponsor-button");
+    if(obj === null){
+        // check if the button has already been created
+        obj = document.getElementById("watch7-subscription-container");
+        btnRow = document.getElementById('y2mp3');
+        if(btnRow == null){
+            myAppInterface.init();
+            y2mp3 = document.createElement("div");
+            y2mp3.id = "y2mp3";
+            y2mp3.className = "yt-uix-button";
+            yBtn = document.createElement("div");
+            yBtn.className = "yt-uix-button yt-uix-button-subscribe-branded btn-padding";
+            yBtn.appendChild(getSpan("Download MP3"))
+            yBtn.onclick = ytBtnOnclick;
+            obj.parentNode.insertBefore(y2mp3, obj);
+            y2mp3.appendChild(yBtn);
+        }
+    }
     if(obj != null){
         // check if the button has already been created
-        var btnRow = document.getElementById('y2mp3');
+        btnRow = document.getElementById('y2mp3');
         if(btnRow == null){
-            myAppInterface.init()
-            var y2mp3 = document.createElement("div");
+            myAppInterface.init();
+            y2mp3 = document.createElement("div");
             y2mp3.id = "y2mp3";
             y2mp3.className = "style-scope ytd-watch";
-            var easy_btn = document.createElement("div");
-            easy_btn.className = "style-scope easy_btn";
-            easy_btn.appendChild(getSpan("Download MP3"))
-            easy_btn.onclick = ytBtnOnclick;
+            yBtn = document.createElement("div");
+            yBtn.className = "style-scope easy_btn";
+            yBtn.appendChild(getSpan("Download MP3"))
+            yBtn.onclick = ytBtnOnclick;
             obj.parentNode.insertBefore(y2mp3, obj);
-            y2mp3.appendChild(easy_btn);
+            y2mp3.appendChild(yBtn);
         }
     }
 };
@@ -108,4 +127,3 @@ function createButton() {
 var intervalCheck = setInterval(function(){
    createButton();
 }, 250);
-

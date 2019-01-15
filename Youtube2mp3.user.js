@@ -3,28 +3,41 @@
 // @description     The YouTube 2 mp3 Add-on includes a Button on any YouTube Page and allows you to convert the YouTube Video to a mp3 with just one click.
 // @icon            https://raw.githubusercontent.com/rytotul/Youtube2mp3/master/icon.png
 //
-// @author          Totul
+// @author          Rakibul Yeasin
 // @namespace       https://rytotul.github.io
 // @downloadURL     https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @license         GPLv3 - http://www.gnu.org/licenses/gpl-3.0.txt
-// @copyright       Copyright (C) 2018, by Totul
+// @copyright       Copyright (C) 2019, by 'Rakibul Yeasin'
 //
 // @include         http://*youtube.*/*watch*
 // @include         https://*youtube.*/*watch*
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
+// @include         http://chart.googleapis.com/*
+// @include         https://chart.googleapis.com/*
 //
-// @version         1.0.4
+// @version         1.0.5
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-end
 // @unwrap
 // ==/UserScript==
 
+// ==ChangeLog==
+// @history        1.0.5  Some Major Bug-Fix
+// @history        1.0.4  Compatible with the latest update of Youtube
+// @history        1.0.3  Server update
+// @history        1.0.2  Server update
+// @history        1.0.1 Server edit
+// @history        1.0.0 Initial release.
+// ==/ChangeLog==
+
 
 // Button That Captures the click and do the work
 function ytBtnOnclick() {
+    var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search; // path to download link
+
     // Some window measurement capturing
     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
     var dualScreenTop = window.screenTop != undefined ? window.screenTop : window.screenY;
@@ -34,33 +47,21 @@ function ytBtnOnclick() {
     var top = ((height / 2) - (700 / 2)) + dualScreenTop;
 
     // Property for new po-up window
-    var data;
-    var video_id = window.location.search.split('v=')[1];
-    var url = 'https://www.download-mp3-youtube.com/api/?api_key=MjI0NzExODEw&format=mp3&video_id=' + video_id;
-    fetch(url).then(response => {
-        console.log(response);
-        return response;
-    }).then(myJson => {
-        //console.log(myJson.link);
-        var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+myJson.link+"&chs=350x350&chld=L|0";
-        //console.log(qr_code);
-        var newwindow = window.open("","Qr Code","height=400,width=400");
-        newwindow.document.write('<title>YouTube 2 mp3</title><iframe style="margin-top:12.5px; margin-left:12.5px; width:370px; height:370px; align:center; border:none;" src="'+qr_code+'"></iframe>');
-        if (window.focus) {newwindow.focus()}
-    });
+    var newwindow = window.open(path,"Qr Code",'height=400,width=400,top='+top+',left='+left);
+    if (window.focus) {newwindow.focus();}
     return false;
-  }
+}
 
-  // injecting interface to youtube
-  function getSpan(text, className) {
+// injecting interface to youtube
+function getSpan(text, className) {
     var _tn = document.createTextNode(text);
     var span = document.createElement("span");
     span.className = className;
     span.appendChild(_tn);
     return span;
-  };
+};
 
-  var myAppInterface = {
+var myAppInterface = {
     init:function(){
         this.insertGlobalCSS()
     },
@@ -105,9 +106,9 @@ function ytBtnOnclick() {
         }.toString().replace("/*start",'').replace("end*/",'').slice(14,-1);
         this.addGlobalStyle(document, css);
     },
-  }
+}
 
-  function createButton() {
+function createButton() {
     var btnRow, y2mp3, yBtn;
     var obj = document.getElementById("sponsor-button");
     if(obj === null){
@@ -143,11 +144,23 @@ function ytBtnOnclick() {
             y2mp3.appendChild(yBtn);
         }
     }
-  };
+};
 
-  // yt does make use of some bogus AJAX functionality which breaks pagemod
-  // we have to check in intervals if the document has been replaced by yt to
-  // recreate the button if needed.
-  var intervalCheck = setInterval(function(){
-    createButton();
-  }, 4000);
+// yt does make use of some bogus AJAX functionality which breaks pagemod
+// we have to check in intervals if the document has been replaced by yt to
+// recreate the button if needed.
+var intervalCheck = setInterval(function(){
+    if (window.location.origin === "https://www.youtube.com") {
+        createButton();
+    }
+    else if (window.location.origin === "https://chart.googleapis.com") {
+        document.title = "Youtube to Mp3 QR-Code"
+    } else {
+        var button = document.getElementsByClassName('btn-success');
+        button.toString;
+        var link = button[0].href;
+        //var qr_code = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+link;
+        var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
+        window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');
+    }
+}, 250);

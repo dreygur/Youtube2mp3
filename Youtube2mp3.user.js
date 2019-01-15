@@ -10,8 +10,8 @@
 // @license         GPLv3 - http://www.gnu.org/licenses/gpl-3.0.txt
 // @copyright       Copyright (C) 2018, by Totul
 //
-// @include         http://www.youtube.com/*
-// @include         https://www.youtube.com/*
+// @include         http://*youtube.*/*watch*
+// @include         https://*youtube.*/*watch*
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //
@@ -32,7 +32,7 @@ function ytBtnOnclick() {
     var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
     var left = ((width / 2) - (700 / 2)) + dualScreenLeft;
     var top = ((height / 2) - (700 / 2)) + dualScreenTop;
-  
+
     // Property for new po-up window
     var data;
     var video_id = window.location.search.split('v=')[1];
@@ -50,7 +50,7 @@ function ytBtnOnclick() {
     });
     return false;
   }
-  
+
   // injecting interface to youtube
   function getSpan(text, className) {
     var _tn = document.createTextNode(text);
@@ -59,7 +59,7 @@ function ytBtnOnclick() {
     span.appendChild(_tn);
     return span;
   };
-  
+
   var myAppInterface = {
     init:function(){
         this.insertGlobalCSS()
@@ -106,7 +106,7 @@ function ytBtnOnclick() {
         this.addGlobalStyle(document, css);
     },
   }
-  
+
   function createButton() {
     var btnRow, y2mp3, yBtn;
     var obj = document.getElementById("sponsor-button");
@@ -144,11 +144,10 @@ function ytBtnOnclick() {
         }
     }
   };
-  
+
   // yt does make use of some bogus AJAX functionality which breaks pagemod
   // we have to check in intervals if the document has been replaced by yt to
   // recreate the button if needed.
   var intervalCheck = setInterval(function(){
     createButton();
   }, 4000);
-  

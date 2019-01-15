@@ -10,8 +10,8 @@
 // @license         GPLv3 - http://www.gnu.org/licenses/gpl-3.0.txt
 // @copyright       Copyright (C) 2018, by Totul
 //
-// @include         http://www.youtube.com/*
-// @include         https://www.youtube.com/*
+// @include         http://*youtube.*/*watch*
+// @include         https://*youtube.*/*watch*
 // @include         http://www.easy-youtube-mp3.com/*
 // @include         https://www.easy-youtube-mp3.com/*
 //

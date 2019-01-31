@@ -17,7 +17,7 @@
 // @include         http://chart.googleapis.com/*
 // @include         https://chart.googleapis.com/*
 //
-// @version         1.0.5
+// @version         1.0.6
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-start

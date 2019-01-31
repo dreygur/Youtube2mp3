@@ -20,7 +20,7 @@
 // @version         1.0.5
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
-// @run-at          document-end
+// @run-at          document-start
 // @unwrap
 // ==/UserScript==
 

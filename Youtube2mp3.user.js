@@ -12,12 +12,12 @@
 //
 // @include         http://*youtube.*/*watch*
 // @include         https://*youtube.*/*watch*
-// @include         http://www.easy-youtube-mp3.com/*
-// @include         https://www.easy-youtube-mp3.com/*
+// @include         http://*download-mp3-youtube.*
+// @include         https://*download-mp3-youtube.*
 // @include         http://chart.googleapis.com/*
 // @include         https://chart.googleapis.com/*
 //
-// @version         1.0.6
+// @version         1.0.7
 // @updateURL       https://github.com/rytotul/Youtube2mp3/raw/master/Youtube2mp3.user.js
 //
 // @run-at          document-start
@@ -25,10 +25,11 @@
 // ==/UserScript==
 
 // ==ChangeLog==
-// @history        1.0.5  Some Major Bug-Fix
-// @history        1.0.4  Compatible with the latest update of Youtube
-// @history        1.0.3  Server update
-// @history        1.0.2  Server update
+// @history        1.0.7 Changed api
+// @history        1.0.5 Some Major Bug-Fix
+// @history        1.0.4 Compatible with the latest update of Youtube
+// @history        1.0.3 Server update
+// @history        1.0.2 Server update
 // @history        1.0.1 Server edit
 // @history        1.0.0 Initial release.
 // ==/ChangeLog==
@@ -36,7 +37,8 @@
 
 // Button That Captures the click and do the work
 function ytBtnOnclick() {
-    var path ='https://www.easy-youtube-mp3.com/download.php'+window.location.search; // path to download link
+    // var path = 'https://www.easy-youtube-mp3.com/download.php'+window.location.search; // path to download link
+    var path = 'https://www.download-mp3-youtube.com/api/?api_key=Mjk5NzI0MTYw&format=mp3&logo=1&video_id=' + window.location.search
 
     // Some window measurement capturing
     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
@@ -156,9 +158,9 @@ var intervalCheck = setInterval(function(){
     else if (window.location.origin === "https://chart.googleapis.com") {
         document.title = "Youtube to Mp3 QR-Code"
     } else {
-        var button = document.getElementsByClassName('btn-success');
-        button.toString;
-        var link = button[0].href;
+        var button = document.getElementById('downloadButton');
+        // button.toString;
+        var link = button.href;
         //var qr_code = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+link;
         var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
         window.open(qr_code, '_top', 'Youtube 2 mp3 QR-Code');

@@ -49,8 +49,9 @@ function ytBtnOnclick() {
     var top = ((height / 2) - (700 / 2)) + dualScreenTop;
 
     // Property for new po-up window
-    var newwindow = window.open(path,"Qr Code",'height=400,width=400,top='+top+',left='+left);
-    if (window.focus) {newwindow.focus();}
+    // var newWindow = window.open(path,"Qr Code",'height=400,width=400,top='+top+',left='+left);
+    var newWindow = window.open(path, '_blank');
+    if (window.focus) {newWindow.focus();}
     return false;
 }
 
@@ -158,8 +159,9 @@ var intervalCheck = setInterval(function(){
     else if (window.location.origin === "https://chart.googleapis.com") {
         document.title = "Youtube to Mp3 QR-Code"
     } else {
-        var button = document.getElementById('downloadButton');
+        // var button = document.getElementById('downloadButton');
         // button.toString;
+        var d_link = window.location.search;
         var link = button.href;
         //var qr_code = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+link;
         var qr_code = "https://chart.googleapis.com/chart?cht=qr&chl="+link+"&chs=300x300&chld=L|0";
